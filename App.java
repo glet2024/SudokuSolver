@@ -12,7 +12,9 @@ public class App extends Application {
         Scene scene = new Scene(organizer.getRoot(), 400, 450);
 
         stage.setScene(scene);
-        stage.setTitle("SudokuSolver");
+        stage.setTitle("Sudoku Solver");
+        stage.setResizable(false);
+
         stage.show();
     }
 

@@ -6,16 +6,16 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 public class PaneOrganizer {
 
     private GridPane _root;
     private TextField[][] _textFields;
+    private Pane _linePane;
+    private StackPane _stackPane;
 
     public PaneOrganizer() {
         _textFields = new TextField[9][9];
@@ -24,6 +24,25 @@ public class PaneOrganizer {
         _root.setVgap(20);
         _root.setHgap(10);
         _root.setPadding(new Insets(25, 25, 25, 25));
+
+        Line line1 = new Line(140, 11, 140, 395);
+        Line line2 = new Line(260, 11, 260, 395);
+        Line line3 = new Line(25, 135, 375, 135);
+        Line line4 = new Line(25, 270, 375, 270);
+        line1.setStyle("-fx-stroke:rgb(200,200,200)");
+        line2.setStyle("-fx-stroke:rgb(200,200,200)");
+        line3.setStyle("-fx-stroke:rgb(200,200,200)");
+        line4.setStyle("-fx-stroke:rgb(200,200,200)");
+        line1.setStrokeWidth(3);
+        line2.setStrokeWidth(3);
+        line3.setStrokeWidth(3);
+        line4.setStrokeWidth(3);
+        _linePane = new Pane();
+        _linePane.getChildren().addAll(line1, line2, line3, line4);
+
+
+        _stackPane = new StackPane(_linePane, _root);
+
 
         this.setupBoard();
         this.setupClearButton();
@@ -110,6 +129,6 @@ public class PaneOrganizer {
 
 
     public Pane getRoot() {
-        return _root;
+        return _stackPane;
     }
 }
